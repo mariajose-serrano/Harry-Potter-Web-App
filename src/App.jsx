@@ -11,13 +11,9 @@ import logoHP from "./images/harrypotter.png";
 function App() {
   const [characters, setCharacters] = useState([]);
 
-  // lo que se escribe
+  // lo que se escribe (se filtra en tiempo real)
   const [searchInput, setSearchInput] = useState("");
   const [houseInput, setHouseInput] = useState("");
-
-  // lo que se aplica (al buscar)
-  const [searchApplied, setSearchApplied] = useState("");
-  const [houseApplied, setHouseApplied] = useState("");
 
   useEffect(() => {
     fetch("https://hp-api.onrender.com/api/characters")
@@ -35,36 +31,14 @@ function App() {
 
   const filteredCharacters = useMemo(() => {
     return characters.filter((c) => {
-      const matchesName = normalize(c.name).includes(normalize(searchApplied));
-
+      const matchesName = normalize(c.name).includes(normalize(searchInput));
       const matchesHouse =
-        normalize(houseApplied) === "" ||
-        normalize(c.house).includes(normalize(houseApplied));
+        normalize(houseInput) === "" ||
+        normalize(c.house).includes(normalize(houseInput));
 
       return matchesName && matchesHouse;
     });
-  }, [characters, searchApplied, houseApplied]);
-
-  const applyFilters = () => {
-    setSearchApplied(searchInput);
-    setHouseApplied(houseInput);
-
-    // debug: esto te dirá si el botón/submit está funcionando
-    console.log("APLICANDO =>", { searchInput, houseInput });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    applyFilters();
-  };
-
-  const handleClear = () => {
-    setSearchInput("");
-    setHouseInput("");
-    setSearchApplied("");
-    setHouseApplied("");
-    console.log("LIMPIANDO FILTROS");
-  };
+  }, [characters, searchInput, houseInput]);
 
   return (
     <Routes>
@@ -77,22 +51,10 @@ function App() {
             </header>
 
             <main className="app-container">
-              <form className="filters-container" onSubmit={handleSubmit}>
+              <div className="filters-container">
                 <FilterName search={searchInput} setSearch={setSearchInput} />
                 <FilterHouse house={houseInput} setHouse={setHouseInput} />
-
-                <button type="submit">Buscar</button>
-
-                {/* por si tu submit no se dispara por cualquier cosa,
-                    este botón también aplica filtros por click */}
-                <button type="button" onClick={applyFilters}>
-                  Buscar por casa
-                </button>
-
-                <button type="button" onClick={handleClear}>
-                  Limpiar
-                </button>
-              </form>
+              </div>
 
               <CharacterList characters={filteredCharacters} />
             </main>

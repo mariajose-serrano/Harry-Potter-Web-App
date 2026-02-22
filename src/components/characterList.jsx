@@ -1,18 +1,16 @@
-import { Link } from "react-router-dom";
+import CharacterCard from "./characterCard";
 
 function CharacterList({ characters }) {
   if (!characters.length) {
-    return <p>No hay personajes que coincidan.</p>;
+    return <p className="empty">No hay personajes que coincidan.</p>;
   }
 
   return (
-    <ul className="character-list">
+    <section className="characters-grid">
       {characters.map((character) => (
-        <li key={character.id}>
-          <Link to={`/character/${character.id}`}>{character.name}</Link>
-        </li>
+        <CharacterCard key={character.id} character={character} />
       ))}
-    </ul>
+    </section>
   );
 }
 
