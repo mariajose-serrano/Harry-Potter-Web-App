@@ -2,7 +2,7 @@ function FilterName({ search, setSearch }) {
   return (
     <div className="filter-name">
       <label htmlFor="search" className="label">
-        Busca por personaje:
+        Busca por nombre:
       </label>
 
       <input

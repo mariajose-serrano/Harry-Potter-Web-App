@@ -1,20 +1,20 @@
-function FilterName({ search, setSearch }) {
+function FilterHouse({ house, setHouse }) {
   return (
-    <div className="filter-name">
-      <label htmlFor="search" className="label">
+    <div className="filter-house">
+      <label htmlFor="house" className="label">
         Selecciona la Casa:
       </label>
 
       <input
-        id="search"
+        id="house"
         type="text"
         className="input"
-        placeholder="Ej.: Harry, Hermione..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
+        placeholder="Ej.: Gryffindor, Slytherin..."
+        value={house}
+        onChange={(e) => setHouse(e.target.value)}
       />
     </div>
   );
 }
 
-export default FilterName;
+export default FilterHouse;
