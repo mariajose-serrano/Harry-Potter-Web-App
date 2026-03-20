@@ -1,46 +1,52 @@
 🪄 Harry Potter Character Finder
 
-Aplicación en React que muestra un listado de personajes de Harry Potter y permite filtrarlos por nombre y por casa. Además, incluye una pantalla de detalle utilizando React Router.
+A React application that displays a list of Harry Potter characters and allows users to filter them by name and house. It also includes a detailed view using React Router.
 
-✨ Funcionalidades
+✨ Features
 
-Listado de personajes obtenido desde la API pública de Harry Potter.
+Character list fetched from the public Harry Potter API
 
-Filtro por nombre (ignora mayúsculas/minúsculas).
+Filter characters by name (case-insensitive)
 
-Filtro por casa de Hogwarts.
+Filter by Hogwarts house
 
-Vista de detalle con imagen, nombre, casa, estado (vivo/muerto), especie, género y nombres alternativos.
+Detailed view including:
 
-Navegación entre listado y detalle con React Router.
+Image
 
-Diseño responsive con grid.
+Name
 
-Estilo temático inspirado en Harry Potter (logo, colores, fondos, tarjetas).
+House
 
-💻 Tecnologías usadas
+Status (alive/dead)
+
+Species
+
+Gender
+
+Alternative names
+
+Navigation between list and detail pages using React Router
+
+Responsive layout using CSS Grid
+
+Themed design inspired by Harry Potter (colors, backgrounds, cards)
+
+💻 Technologies Used
 
 React
 
 React Router
 
-useState y useEffect
+useState & useEffect
 
-Props para comunicación entre componentes
+Props for component communication
 
-map() y filter() para pintar y filtrar el listado
+Array methods: map() and filter()
 
-SCSS para los estilos
+SCSS for styling
 
+To run the project locally:
 
- Estructura de componentes
-App.jsx
- FilterName
- FilterHouse
- CharacterList
- CharacterCard
- CharacterDetail
-
-🚀 Cómo ejecutar el proyecto
 npm install
 npm run dev
